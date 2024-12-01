@@ -1,5 +1,7 @@
 "use client";
-import LoginCard from "@/app/components/forms/login-form";
+
+import LoginCard from "@/app/(auth)/login/page";
+
 
 export default function Home() {
   return (
