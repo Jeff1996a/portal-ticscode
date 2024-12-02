@@ -5,10 +5,7 @@ import {
     CardHeader,
     CardBody,
     CardFooter,
-    Typography,
-    Input,
-    Checkbox,
-    Button,
+    Typography
   } from "@material-tailwind/react";
   import Image from "next/image";
    
