@@ -8,18 +8,18 @@ import { useForm } from "react-hook-form";
 
 export default function RegisterForm(){
 
-    const {reset, handleSubmit, register,getValues, formState: { errors },
+    const {reset, handleSubmit, register, formState: { errors },
         } = useForm<RegisterTemplateProps>({
         resolver: zodResolver(registerTemplateSchema)});
     
     const submitForm = async (data:RegisterTemplateProps) =>{ 
       console.log(data)
       alert(JSON.stringify(data))
+      reset();
     };
     
     return(
         <>
-           
            <form id="formularioRegistro" onSubmit={handleSubmit(submitForm)} className="gap-2 md:grid md:grid-cols-2">
               <div className="mt-2">
                 <Input label="Nombres"  {...register("nombres")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />

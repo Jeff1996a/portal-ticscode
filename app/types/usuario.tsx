@@ -32,7 +32,7 @@ const usuarioSchema = new Schema({
           validator: function(v: string) {
             return /\d{3}-\d{3}-\d{4}/.test(v);
           },
-          message: (props: { value: any; }) => `${props.value} is not a valid phone number!`
+          message: (props: { value: string; }) => `${props.value} is not a valid phone number!`
         },
         required: [true, 'User phone number required'],
         min: [10, "Must be at least 10 digits" ],

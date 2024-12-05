@@ -1,5 +1,4 @@
 import {NextRequest, NextResponse} from "next/server";
-import { Usuario } from "@/app/types/usuario"
 import {conn} from "@/app/utils/connectiondb"
 import { ObjectId } from "mongodb";
 
