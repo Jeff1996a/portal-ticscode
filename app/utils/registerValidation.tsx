@@ -8,14 +8,9 @@ export const registerTemplateSchema = z.object({
   password: z.string().min(6,{ message: 'Must be at least 6 digits' }).max(12),
   confirmPassword: z.string().min(6, { message: 'Must be at least 6 digits' }).max(12),
   politica: z.boolean()
-}).superRefine((val, ctx) => {
-  if (val.password !== val.confirmPassword) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: 'Password is not the same as confirm password',
-      path: ['confirmPassword'],
-    })
-  }
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Las contraseñas no coinciden",
+  path: ["confirmPassword"], // This points the error to the correct field
 });
 
 export type RegisterTemplateProps = z.infer<typeof registerTemplateSchema>;
