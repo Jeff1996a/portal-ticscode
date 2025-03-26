@@ -14,6 +14,7 @@ const countryOptions = [
   { value: "+91", label: "🇮🇳 +91 (India)" },
   { value: "+61", label: "🇦🇺 +61 (Australia)" },
   { value: "+81", label: "🇯🇵 +81 (Japan)" },
+  { value: "+593", label: "EC +593 (Ecuador)" },
 ];
 
 export default function RegisterForm(){
