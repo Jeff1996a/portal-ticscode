@@ -89,7 +89,8 @@ export default function RegisterForm(){
 
           if (!response.ok) {
             console.log("falling over")
-            setOpen(false);
+            setOpen(true);
+            setMensaje(responseData['message']);
             throw new Error(`response status: ${responseData.status}`);
           }
           else
