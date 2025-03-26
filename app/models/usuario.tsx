@@ -1,4 +1,4 @@
-
+//Usuario.tsx 
 import bcrypt from "bcrypt";
 import mongoose,  {Document, Schema, Model} from "mongoose";
 
@@ -13,6 +13,7 @@ interface IUsuario extends Document {
   rol: string;
   estado: string;
   password: string;
+  codigo_pais: string;
   politica: boolean;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
@@ -43,16 +44,9 @@ const usuarioSchema: Schema<IUsuario> = new Schema({
     },
     telefono: {
         type: String,
-        validate: {
-          validator: function(v: string) {
-            return /\d{3}-\d{3}-\d{4}/.test(v);
-          },
-          message: (props: { value: string; }) => `${props.value} is not a valid phone number!`
-        },
+        match: [/^\d{7,15}$/, "Invalid phone number format"],
         required: [true, 'User phone number required'],
         unique: true,
-        min: [10, "Must be at least 10 digits" ],
-        max: [13, "Invalid phone number"]
     },
     cedula: {
         type: String,
@@ -70,6 +64,10 @@ const usuarioSchema: Schema<IUsuario> = new Schema({
     },
     estado: {
       type: String,
+    },
+    codigo_pais: {
+      type: String,
+      required: [true,"Enter code country"]
     },
     politica: {
       type: Boolean,
