@@ -108,7 +108,7 @@ export default function RegisterForm(){
     return(
         <>
            <form id="formularioRegistro" onSubmit={handleSubmit(submitRegisterForm)} className="gap-2 md:grid md:grid-cols-2">
-           <div className="mt-2">
+              <div className="mt-2">
                 <Input label="Documento de identidad"  {...register("cedula")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
                 {errors?.cedula && <span className="text-red-500 text-xs">{errors.cedula.message}</span>}
               </div>

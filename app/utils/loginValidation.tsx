@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 export const loginValidationSchema = z.object({
   email: z.string().min(1,{ message: 'Email is Required' }).email(),
-  password: z.string().min(9).max(12), 
+  password: z.string().min(9,"Password must be at least 6 characters long").max(12), 
 });
 
 

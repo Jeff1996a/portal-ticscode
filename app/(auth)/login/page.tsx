@@ -1,4 +1,5 @@
 'use client';
+import LoginForm from "@/app/components/forms/login-form";
 import { LoginValidationProps, loginValidationSchema } from "@/app/utils/loginValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -21,8 +22,7 @@ import { useForm } from "react-hook-form";
 
     return (
       <div className="relative w-full flex h-screen content-center items-center justify-center">
-        <form id="ingresar">
-          <Card className="w-96 border border-green-500" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Card className="w-96 border border-green-500" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
             <CardHeader
                     variant="gradient"
                     color="white"
@@ -45,16 +45,9 @@ import { useForm } from "react-hook-form";
                             className="ml-1 font-bold text-center" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
                   Portal TicsCode
                 </Typography>
-              <Input label="Correo electrónico" size="lg" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
-              <Input label="Password" size="lg" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
-              <div className="-ml-2.5">
-                <Checkbox label="Remember Me" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
-              </div>
+                <LoginForm></LoginForm>
             </CardBody>
             <CardFooter className="pt-0" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-              <Button variant="gradient" color="green" fullWidth placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-                Iniciar sesión
-              </Button>
               <Typography variant="small" className="mt-6 flex justify-center" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 Don&apos;t have an account?
                 <Typography
@@ -68,7 +61,6 @@ import { useForm } from "react-hook-form";
               </Typography>
             </CardFooter>
           </Card>
-        </form>
       </div>
       
     );

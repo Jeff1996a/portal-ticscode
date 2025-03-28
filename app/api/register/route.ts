@@ -34,13 +34,13 @@ export async function POST(request: NextRequest){
         } = datos_validados.data;
 
         //2. Conectar con la base de datos 
-        const db = await dbConnect();
+         await dbConnect();
 
         //4. Verificar si el usuario existe en la base de datos
         const usuario_verificado = await Usuario.findOne({email: email});
         
         if (usuario_verificado) {
-            return NextResponse.json({ message: "User with this email already exists"}, {status:400});
+            return NextResponse.json({ message: "User already exists"}, {status:400});
         }
 
         if(!validarCedula(cedula)){
