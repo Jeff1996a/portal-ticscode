@@ -59,14 +59,14 @@ export default function LoginForm(){
         <>
             <form id="formularioLogin" onSubmit={handleSubmit(onSubmit)}>
                 <div className="mt-2">
-                    <Input label="Correo electrónico o Cédula"  {...register("email")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
+                    <Input label="Correo electrónico"  {...register("email")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
                     {errors?.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
                 </div>
                 <div className="mt-2">
                     <Input type="password" label="Contraseña"  {...register("password")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
                     {errors?.password && <span className="text-red-500 text-xs">{errors.password.message}</span>}
                 </div>
-                <div className="w-full justify-center text-center content-center col-span-2 mt-2">
+                <div className="w-full justify-center text-center content-center col-span-2 mt-4">
                     <Button type="submit" variant="gradient" disabled={isSubmitting} color="light-green" fullWidth placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         Iniciar sesión
                     </Button>
