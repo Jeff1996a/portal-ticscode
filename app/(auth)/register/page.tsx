@@ -47,7 +47,7 @@ import {
                           variant="small"
                           color="green"
                           className="ml-1 font-bold" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}            >
-                Sign up
+                Sign in
               </Typography>
             </Typography>
           </CardFooter>

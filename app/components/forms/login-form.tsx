@@ -6,10 +6,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { DialogBox } from "../ui/modal/modal";
 import { Button, Input } from "@material-tailwind/react";
+import {useRouter} from "next/navigation";
 
 export default function LoginForm(){
     const[open, setOpen] = useState(false);
     const [message, setMessage] = useState("");
+    const router = useRouter();
 
     const {
         register, 
@@ -32,7 +34,8 @@ export default function LoginForm(){
             const response = await fetch("api/login",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
-                body: JSON.stringify(values)
+                body: JSON.stringify(values),
+                credentials: "include"
             })
 
             const responseData = await response.json();
@@ -49,6 +52,8 @@ export default function LoginForm(){
             setOpen(true);
             setMessage(responseData['message']);
             reset();
+            // Redirect to dashboard after successful login
+            router.push("/dashboard");
           }
         }catch (err) {
             console.error(err);
