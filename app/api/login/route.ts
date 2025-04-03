@@ -43,17 +43,17 @@ export async function POST(req: NextRequest){
         }
 
         //5. Generar JWT token
-        const token = jwt.sign({ nombres:usuario_verificado.nombres, apellidos: usuario_verificado.apellidos }, process.env.JWT_SECRET!, { expiresIn: "7d" });
+        const token = jwt.sign({id:usuario_verificado._id, nombres:usuario_verificado.nombres, apellidos: usuario_verificado.apellidos,
+            email: usuario_verificado.email
+        }, process.env.JWT_SECRET!, { expiresIn: "1h" });
 
         //6. Store JWT token in a cookie
         const cookie = serialize("ticscodeToken", token,{
             httpOnly:true,
             secure: process.env.NODE_ENV === "production",
             path:"/",
-            maxAge: 7 * 24 * 60 * 60, // 7 days
+            maxAge: 1 * 1 * 60 * 60, // 7 days
         })
-
-
 
         //7. Retornar una respuesta exitosa con el token
         const response =  NextResponse.json({ message: "Login Sucessful", token:token},{status:200});
