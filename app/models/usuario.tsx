@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import mongoose,  {Document, Schema, Model} from "mongoose";
 
 // Definir la interfaz para el modelo de usuario
-interface IUsuario extends Document {
+export interface IUsuario extends Document {
   nombres:string;
   apellidos:string;
   fecha_nacimiento: Date;
