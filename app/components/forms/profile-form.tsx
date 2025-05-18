@@ -49,11 +49,12 @@ export default function ProfileForm(){
   const [form, setForm] =  useState<ProfileTemplateProps>({
         nombres:"",
         apellidos:"",
-        fecha_nacimiento: "",
+        fechaNacimiento: "",
         email: "",
         telefono: "",
         cedula: "",
-        codigo_pais: "",
+        countryCode: "",
+        password:"",
         politica: false,
   });
  const router = useRouter();
@@ -80,9 +81,10 @@ export default function ProfileForm(){
                     nombres: result.nombres,
                     apellidos: result.apellidos,
                     email: result.email,
-                    fecha_nacimiento: result.fecha_nacimiento,
+                    fechaNacimiento: result.fecha_nacimiento,
                     telefono: result.telefono,
-                    codigo_pais: result.codigo_pais,
+                    countryCode: result.codigo_pais,
+                    password: result.password,
                     cedula: result.cedula,
                     politica: result.politica,
                 });
@@ -97,7 +99,7 @@ export default function ProfileForm(){
                 //Get user birth date 
                 const fecha_nacimiento = new Date(result.fecha_nacimiento).toISOString().split('T')[0]
                 setSelectedDate(fecha_nacimiento)
-                setValue("fecha_nacimiento", fecha_nacimiento);
+                setValue("fechaNacimiento", fecha_nacimiento);
                 
                 const country = countryOptions.find((country) => country.value===result.codigo_pais)
                 console.log(country)
@@ -112,7 +114,7 @@ export default function ProfileForm(){
   
   const handleCountryChange = async (selectedOption: any) => {
       setCountryCode(selectedOption.value);
-      setValue("codigo_pais", selectedOption.value, { shouldValidate: true });
+      setValue("countryCode", selectedOption.value, { shouldValidate: true });
   };
 
   const handleDateChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -194,8 +196,8 @@ export default function ProfileForm(){
               </div>
               
               <div className="mt-2">
-                <Input type="date" label="Fecha de nacimiento"  {...register("fecha_nacimiento")} value={selectedDate} onChange={handleDateChange}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />       
-                {errors?.fecha_nacimiento && <span className="text-red-500 text-xs">{errors.fecha_nacimiento.message}</span>}
+                <Input type="date" label="Fecha de nacimiento"  {...register("fechaNacimiento")} value={selectedDate} onChange={handleDateChange}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />       
+                {errors?.fechaNacimiento && <span className="text-red-500 text-xs">{errors.fechaNacimiento.message}</span>}
               </div>
 
               <div className="mt-2 md:col-span-2 gap-2 md:grid md:grid-cols-2">
@@ -206,8 +208,8 @@ export default function ProfileForm(){
                     onChange={handleCountryChange}
                     className="text-sm"
                   />
-                  {errors?.codigo_pais && <span className="text-red-500 text-xs">{errors.codigo_pais.message}</span>}
-                </div>
+                  {errors?.countryCode && <span className="text-red-500 text-xs">{errors.countryCode.message}</span>}
+                </div> 
                 <div className="mt-2">
                 <Input
                   onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} label="Teléfono"

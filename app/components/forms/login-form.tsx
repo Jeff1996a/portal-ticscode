@@ -5,7 +5,7 @@ import {z} from "zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { DialogBox } from "../ui/modal/modal";
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input, Typography } from "@material-tailwind/react";
 import {useRouter} from "next/navigation";
 
 export default function LoginForm(){
@@ -70,6 +70,12 @@ export default function LoginForm(){
                 <div className="mt-2">
                     <Input type="password" label="Contraseña"  {...register("password")}  size="md" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined} />
                     {errors?.password && <span className="text-red-500 text-xs">{errors.password.message}</span>}
+                </div>
+                <div className="mt-2">
+                    <Typography as="a"
+                            href="/recover" variant="small" className="mt-6 flex justify-center" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                        ¿Olvidó su contraseña?          
+                    </Typography>
                 </div>
                 <div className="w-full justify-center text-center content-center col-span-2 mt-4">
                     <Button type="submit" variant="gradient" disabled={isSubmitting} color="light-green" fullWidth placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>

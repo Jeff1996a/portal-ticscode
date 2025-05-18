@@ -18,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className={inter.className}>{children}</div>
+        <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/49713625.js"></script>
       </body>
     </html>
   );
